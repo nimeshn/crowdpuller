@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-controller="appController" itemscope itemtype="http://schema.org/Other">
+	<head>
+		<title ng-bind="title">CrowdPuller Version 1.0</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />				
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>		
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">		
+		<!--<link rel="stylesheet" href="assets/css/font-awesome.min.css">-->
+		<link rel="stylesheet" href="assets/css/index.css">
+		<link rel="stylesheet" href="assets/css/bootstrap-social.css">
+	</head>
+	<body>
+		<div>
+			<nav class="navbar navbar-default" ng-if="IsLoggedIn()">
+			  <div class="container-fluid">
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				  </button>
+				  <a class="navbar-brand" href="" ng-bind="appName"></a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+				  <ul class="nav navbar-nav" ng-show="IsLoggedIn()">
+					<li><a href="#feed">My Feed</a></li>
+					<li><a href="#postlist">My Posts</a></li>
+					<li><a href="#profile">Profile</a></li>
+				  </ul>
+				  <ul class="nav navbar-nav navbar-right">
+					<li ng-click="logout()">
+						<a href="" ng-show="IsLoggedIn()">
+							<span class="glyphicon glyphicon-log-out"></span> Logout <span ng-bind="userName()"></span>
+						</a>
+					</li>
+				  </ul>
+				</div>
+			  </div>
+			</nav>
+			<div class="container">
+				<div class="row">
+					<!--<div class="col-sm-1"></div>-->
+					<div class="col-sm-12">
+						<div ng-view></div>
+					</div>
+					<!--<div class="col-sm-1"></div>-->
+				</div>
+				<div class="row text-center small">
+					<p ng-bind="footerMsg"></p>
+				</div>
+			</div>
+		</div>
+		<script src = "scripts/index.js"></script>
+		<script src="https://apis.google.com/js/platform.js?onload=OnGapiLoaded" async defer></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMUO16W4kQzgksBU4SiTSVxqra-nbbVd0&libraries=places" async defer></script>
+		<script src = "app/app.module.js"></script>
+		<script src = "app/app.variables.js"></script>
+		<script src = "app/app.controller.js"></script>
+		<script src = "app/app.routes.js"></script>
+		<script src = "app/home/home.controller.js"></script>
+		<script src = "app/login/sociallogin.controller.js"></script>
+		<script src = "app/profile/profile.controller.js"></script>
+		<script src = "app/post/postlist.controller.js"></script>
+		<script src = "app/post/post.controller.js"></script>
+		<script src = "app/feed/feed.controller.js"></script>
+		<script src = "app/feed/feedpost.controller.js"></script>
+	</body>
+</html>

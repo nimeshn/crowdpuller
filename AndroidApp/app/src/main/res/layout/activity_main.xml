@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FFF"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/appToolbar"
+		android:layout_width="match_parent"
+		android:layout_height="?attr/actionBarSize"
+		android:background="?attr/colorPrimary"
+		android:elevation="4dp"
+		android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+		app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+		
+	<android.support.v4.widget.DrawerLayout
+		android:id="@+id/drawer_layout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+			
+			<fragment android:name="com.bitwinger.crowdpuller.fragments.FeedListFragment"
+				android:id="@+id/feedListFragment"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				tools:layout="@layout/feed_list" />
+
+			<fragment android:name="com.bitwinger.crowdpuller.fragments.FeedDetailsFragment"
+				android:id="@+id/feedDetailsFragment"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				tools:layout="@layout/feed_details" />
+
+			<fragment android:name="com.bitwinger.crowdpuller.fragments.PostListFragment"
+				android:id="@+id/postListFragment"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				tools:layout="@layout/post_list" />
+
+			<fragment android:name="com.bitwinger.crowdpuller.fragments.PostDetailsFragment"
+				android:id="@+id/postDetailsFragment"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				tools:layout="@layout/post_details" />
+
+			<fragment android:name="com.bitwinger.crowdpuller.fragments.SplashFragment"
+				android:id="@+id/splashFragment"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				tools:layout="@layout/splash" />
+
+			<fragment android:name="com.bitwinger.crowdpuller.fragments.ProfileFragment"
+				android:id="@+id/profileFragment"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				tools:layout="@layout/profile" />
+
+			<fragment
+				android:id="@+id/mapFragment"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:name="com.google.android.gms.maps.MapFragment" >
+
+				<android.support.v7.widget.CardView
+					xmlns:card_view="http://schemas.android.com/apk/res-auto"
+					android:id="@+id/card_view"
+					android:layout_gravity="top"
+					android:layout_margin="5dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					card_view:cardCornerRadius="4dp">
+					<fragment
+						android:id="@+id/place_autocomplete_fragment"
+						android:layout_width="match_parent"
+						android:layout_height="40dp"
+						android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"/>
+				</android.support.v7.widget.CardView>
+				<android.support.v7.widget.CardView
+					xmlns:card_view="http://schemas.android.com/apk/res-auto"
+					android:id="@+id/card_view_bottom"
+					android:layout_gravity="bottom"
+					android:layout_margin="5dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					card_view:cardCornerRadius="4dp">
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="#AA000000"
+						android:orientation="vertical">
+						<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:textAlignment="center"
+							android:text="Please set post rectangle height and width"
+							android:textStyle="bold|italic"
+							android:textColor="#ffffff"/>
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:orientation="horizontal">
+							<LinearLayout
+								android:layout_width="0dp"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:orientation="vertical">
+								<SeekBar
+									android:id="@+id/seek_bar_width"
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:max="100"
+									android:padding="0dp"
+									android:layout_margin="0dp"/>
+								<TextView
+									android:id="@+id/txt_rect_width"
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:textAlignment="center"
+									android:textColor="#ffffff"
+									android:padding="0dp"
+									android:layout_margin="0dp"/>
+							</LinearLayout>
+							<LinearLayout
+								android:layout_width="0dp"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:orientation="vertical">
+								<SeekBar
+									android:id="@+id/seek_bar_height"
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:max="100"
+									android:padding="0dp"
+									android:layout_margin="0dp"/>
+								<TextView
+									android:id="@+id/txt_rect_height"
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:textAlignment="center"
+									android:textColor="#ffffff"
+									android:padding="0dp"
+									android:layout_margin="0dp"/>
+							</LinearLayout>
+						</LinearLayout>
+					</LinearLayout>
+				</android.support.v7.widget.CardView>
+			</fragment>
+		</LinearLayout>
+		<!-- Listview to display slider menu -->
+		<ListView
+			android:id="@+id/list_slidermenu"
+			android:layout_width="240dp"
+			android:layout_height="match_parent"
+			android:layout_gravity="start"
+			android:choiceMode="singleChoice"
+			android:divider="@color/list_divider"
+			android:dividerHeight="1dp"
+			android:listSelector="@drawable/list_selector"
+			android:background="@color/list_background"/>
+	</android.support.v4.widget.DrawerLayout>
+</LinearLayout>

@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">CrowdPuller</string>
+    <string name="action_settings">Settings</string>
+    <string name="facebook_app_id">859675590797437</string>
+    <string name="google_app_id">204285913760</string>
+    <string name="google_plus_client_id">204285913760-l1ffdja39fq76g8srsqueqimlhldtss0.apps.googleusercontent.com</string>
+    <string name="loading">Loading..</string>
+    <string name="signed_in_fmt">Signed in as: %s</string>
+    <string name="signed_out">Signed Out</string>
+    <string name="usersettings_fragment_log_in_button">Log in&#8230;</string>
+    <string name="usersettings_fragment_logged_in">Logged in</string>
+    <string name="usersettings_fragment_not_logged_in">Not logged in</string>
+    <string name="usersettings_fragment_logo_content_description">Facebook Logo</string>
+    <string name="logo_content_description">logo</string>
+    <string name="crowdpuller_debug_api_server">https://192.168.0.4</string>
+    <string name="crowdpuller_release_api_server">https://api.bitwinger.com</string>
+    <string name="crowdpuller_api_path">/crowdpuller</string>
+    <string name="crowdpuller_debug_web_url">https://crowdpuller.bitwinger.com</string>
+    <string name="crowdpuller_release_web_url">https://crowdpuller.bitwinger.com</string>
+
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>Feeds</item>
+        <item>My Posts</item>
+        <item>Profile</item>
+        <item>Account Status</item>
+    </string-array>
+    <string-array name="nav_drawer_titles">
+        <item>Feeds</item>
+        <item>My Posts</item>
+        <item>Profile</item>
+        <item>Account Status</item>
+        <item>Feed Details</item>
+        <item>Post Details</item>
+        <item>Select Location</item>
+    </string-array>
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_forum_black</item>
+        <item>@drawable/ic_message_black</item>
+        <item>@drawable/ic_account_circle_black</item>
+        <item>@drawable/ic_exit_to_app_black</item>
+    </array>
+    <string name="desc_list_item_icon">Item Icon</string>
+
+    <string name="action_set_fav_filter_on">Show Favorites</string>
+    <string name="action_set_fav_filter_off">Show All</string>
+    <string name="action_set_category_filter_on">Filter By Category</string>
+    <string name="action_set_category_filter_off">Clear Filter Category</string>
+    <string name="action_flag_as_inappropriate">Flag as inappropriate</string>
+    <string name="action_fb_share_post">Share on Facebook</string>
+    <string name="action_refresh_feeds">Refresh</string>
+    <string name="action_refresh_posts">Refresh</string>
+    <string name="action_new_post">New Post</string>
+    <string name="action_retry_login">Retry Login</string>
+    <string name="address_found">Address Found</string>
+    <string name="title_activity_map">Crowdpuller Map</string>
+
+    <string name="pick_share_app">Share With</string>
+    <array name="share_app_list">
+        <item>Facebook</item>
+        <item>WhatsApp</item>
+        <item>Google Plus</item>
+    </array>
+</resources>

@@ -1,0 +1,103 @@
+<div class="row">
+	<div class="col-sm-2">
+	</div>
+	<div class="col-sm-8">
+		<div class="row" ng-include="'/app/error/errorhandler.view.html'"></div>
+		<div class="row text-center">
+			<h3>My Profile</h3>
+			<hr class="soften small">
+		</div>
+		<form class="form-horizontal" role="form" name="signupForm" ng-submit="saveProfile()">
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-sm-4" for="locationBtn">Feed Locality:</label>
+					<div class="col-sm-8">
+						<a href="" id="locationBtn" role="button" class="btn btn-info" data-toggle="modal" data-target="#mapModal">
+						<span class="glyphicon glyphicon-map-marker"></span></a>
+						<span class="small" ng-bind="mData.addr"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-4" for="emlId">Email:</label>
+					<div class="col-sm-8">
+						<input type="email" class="form-control" id="emlId" name="emlId" placeholder="Enter Email" ng-model="mData.emlId" maxlength="200" required />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-4" for="FN">Full Name:</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="FN" name="FN" placeholder="Enter Full Name" ng-model="mData.FN" maxlength="50" required />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-4" for="bYr">Birth Year:</label>
+					<div class="col-sm-8">
+						<input type="number" class="form-control" id="bYr" name="bYr" ng-model="mData.bYr" min="{{currYear-100}}" max="{{currYear-18}}" required/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-4" for="sex">Gender:</label>
+					<div class="col-sm-8">
+						<label class="radio-inline"><input type="radio" name="sex" ng-model="mData.sex" value="M" required>Male</label>
+						<label class="radio-inline"><input type="radio" name="sex" ng-model="mData.sex" value="F" required>Female</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-4 col-sm-8">
+						<label class="checkbox-inline"><input type="checkbox" id="shareCI" name="shareCI" ng-model="mData.shareCI" />Share Contact Details</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-4">
+						<button ng-click="redirectPath('/feed')" class="btn btn-link"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
+					</div>
+					<div class="col-sm-offset-2 col-sm-4">
+						<button type="submit" class="btn btn-link"><span class="glyphicon glyphicon-save"></span> Save</button>
+					</div>
+				</div>
+			</div>
+		</form>
+		<!-- Map Modal -->
+		<div class="modal fade" id="mapModal" role="dialog">
+			<div class="modal-dialog map-modal">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title text-center">Select locality for your feed subscription</h4>
+					</div>
+					<div class="modal-body small">
+						<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+						<div id="mapDiv"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Popup Message Modal -->
+		<div class="modal fade" id="alertModal" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title text-center" ng-bind="alertTitle"></h4>
+					</div>
+					<div class="modal-body">
+						<p ng-bind="alertMessage"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<hr class="soften small">
+		</div>
+	</div>
+	<div class="col-sm-2">
+	</div>
+</div>

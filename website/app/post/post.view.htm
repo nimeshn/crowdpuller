@@ -1,0 +1,166 @@
+<div class="row">
+	<div class="col-sm-2">
+	</div>
+	<div class="col-sm-8">
+		<div class="row" ng-include="'/app/error/errorhandler.view.html'"></div>
+		<div class="row text-center">
+			<h3 ng-bind="(isNewPost()?'New':'Edit') + ' Post'"></h3>
+			<hr class="soften small">
+		</div>
+		<form class="form-horizontal" role="form" name="signupForm" ng-submit="submit()">
+			<div class="row">
+				<div class="form-group" ng-if="hasFlags">
+					<div class="alert alert-danger fade in">
+						<a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						{{postFlags.flagCnt}} user(s) have flagged this post as containing banned content.
+						<a href="" role="button" class="btn btn-link" data-toggle="modal" data-target="#bannedModal">
+							<span class="glyphicon glyphicon-question-sign"></span>
+						</a>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-4" for="emlId">Select Region:</label>
+					<div class="col-sm-8">
+						<a href="" role="button" class="btn btn-info" data-toggle="modal" data-target="#mapModal">
+						<span class="glyphicon glyphicon-map-marker"></span></a>
+						<span class="small" ng-bind="postData.addr"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-4" for="hdr">Title:</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="hdr" placeholder="Enter Title" ng-model="postData.hdr" maxlength="100" required />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-4" for="msg">Message:</label>
+					<div class="col-sm-8">
+						<textarea class="form-control" id="msg" placeholder="Enter Description" ng-model="postData.msg" maxlength="500" rows="5" required></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-4" for="catId">Category:</label>
+					<div class="col-sm-8">
+						<select class="form-control" id="catId" placeholder="Select Category" ng-model="postData.catid">
+							<option ng-repeat="cc in category" ng-selected="postData.catid == cc.id"
+									value="{{cc.id}}">
+								{{cc.code}}
+							</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-4" for="rspType">Feedback Options:</label>
+					<div class="col-sm-8">
+						<select class="form-control" id="rspType" placeholder="Select Response Options" ng-model="postData.rspType">
+							<option ng-repeat="x in responseType | orderBy:Id:reverse" ng-selected="postData.rspType == x.Id"
+									value="{{x.Id}}">
+								{{x.name}}
+							</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-4" for="expryDt">Expiry Date:</label>
+					<div class="col-sm-8">
+						<input type="date" class="form-control" id="expryDt" placeholder="Enter Expiry Date" ng-model="postData.expryDt" min="{{minExpiryDate}}" max="{{maxExpiryDate}}" required />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-8">
+						<span id="btnMore" data-toggle="collapse" data-target="#moreOptions" class="pull-right small"  role="button">
+							<span class="glyphicon glyphicon-chevron-down"></span><span class="btnText"> Show More</span>
+						</span>
+					</div>
+				</div>
+				<div id="moreOptions" class="collapse">
+					<div class="form-group" ng-if="(!isNewPost()) && (respCount > 0)">
+						<label class="control-label col-sm-4" for="emlId">Users Responses:</label>
+						<div class="col-sm-8">
+							<ul class="list-group">
+								<li ng-repeat="rsp in respData|orderBy:ord" class="list-group-item"><span class="badge">{{rsp.rspCount}}</span> {{rsp.val}}</li>
+							</ul>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-4" for="prfSex">Target Gender:</label>
+						<div class="col-sm-8">
+							<label class="radio-inline"><input type="radio" name="prfSex" ng-model="postData.prfSex" value="M">Male</label>
+							<label class="radio-inline"><input type="radio" name="prfSex" ng-model="postData.prfSex" value="F">Female</label>
+							<label class="radio-inline"><input type="radio" name="prfSex" ng-model="postData.prfSex" selected>Both</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-4" for="prfMinAge">Target Min Age:</label>
+						<div class="col-sm-8">
+							<input type="number" class="form-control" id="prfMinAge" placeholder="Enter Target Min Age" ng-model="postData.prfMinAge" min="18" max="100" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-4" for="prfMaxAge">Target Max Age:</label>
+						<div class="col-sm-8">
+							<input type="number" class="form-control" id="prfMaxAge" placeholder="Enter Target Max Age" ng-model="postData.prfMaxAge" min="18" max="100" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-4">
+						<button ng-click="redirectPath('/postlist')" class="btn btn-link"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
+					</div>
+					<div class="col-sm-offset-2 col-sm-4">
+						<button type="submit" class="btn btn-link"><span class="glyphicon glyphicon-save"></span> Save</button>
+					</div>
+				</div>
+			</div>
+		</form>
+		<!-- Modal -->
+		<div class="modal fade" id="mapModal" role="dialog">
+			<div class="modal-dialog map-modal">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title text-center">Select your primary location</h4>
+					</div>
+					<div class="modal-body small">
+						<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+						<div id="mapDiv"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="bannedModal" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Inappropriate or Banned Content</h4>
+					</div>
+					<div class="modal-body small">
+						<p>All users must comply with all applicable laws, the <span ng-bind="appName"></span> terms of use, and all posted rules. Here is a partial list of goods, services, and content prohibited on <span ng-bind="appName"></span>:</p>
+						<ul>
+							<li ng-repeat="rsn in flagReasons|orderBy:Id">
+								{{rsn.dscrpt}}
+							</li>
+						</ul>
+						<p>Please don't use <span ng-bind="appName"></span> for these purposes, and flag anyone else you see doing so. Thanks for helping keep <span ng-bind="appName"></span> safe and useful for everyone.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<hr class="soften small">
+		</div>
+	</div>
+	<div class="col-sm-2">
+	</div>
+</div>

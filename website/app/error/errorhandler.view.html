@@ -1,0 +1,9 @@
+<div ng-if="errors.api404" class="alert alert-warning" >
+	<span ng-repeat="m in errors.apiMsg track by $index"><span ng-bind="m"></span><br/></span>
+</div>
+<div ng-if="errors.api500" class="alert alert-danger text-center">
+	<span ng-bind="errors.apiMsg"></span>
+</div>
+<div ng-if="errors.api401" class="alert alert-danger text-center">
+	<a ng-href="#/login" ng-bind="errors.apiMsg"></a>
+</div>

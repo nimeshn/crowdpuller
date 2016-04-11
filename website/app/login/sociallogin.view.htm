@@ -1,0 +1,31 @@
+<hr class="soften">
+<div class="row text-center">
+	<div class="col-sm-1">
+	</div>
+	<div class="col-sm-10">
+		<div class="row" ng-include="'/app/error/errorhandler.view.html'"></div>
+		<div class="row text-center">
+			<img src="assets/images/logo.png" alt="logo"/>
+		</div>
+		<h2 class="row text-justify">
+			<em><small>
+			<mark><span ng-bind="appName"></span></mark> is a free <mark>location based</mark> sharing App. You can set preferred <mark>viewer's location, age, gender</mark>, there by <mark>filtering viewer's feeds</mark> by location. Sign in using your <mark>Facebook or Google account</mark> to start using <mark><span ng-bind="appName"></span></mark> for your neighbourhood.
+			</small></em>
+		</h2>
+		<br/>
+		<div class="row text-center">
+			<a id="fbBtn" ng-click="openFBLoginDialog();" class="btn btn-lg btn-social btn-facebook">
+				<span class="fa fa-facebook"></span> Facebook
+			</a>
+		</div>
+		<br/>
+		<div class="row text-center">
+			<a id="gpBtn" ng-click="openGPLoginDialog();" class="btn btn-lg btn-social btn-google">
+				<span class="fa fa-google"></span> &nbspGoogle+&nbsp
+			</a>
+		</div>
+	</div>
+	<div class="col-sm-1">
+	</div>
+</div>
+<hr class="soften">

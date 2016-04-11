@@ -1,0 +1,38 @@
+<br/>
+<div class="row text-center">
+	<img src="assets/images/logo.png" alt="logo"/>
+</div>
+<h2 class="row text-justify">
+	<em><small>
+	<mark><span ng-bind="appName"></span></mark> is a free <mark>location based</mark> sharing App. You can set preferred <mark>viewer's location, age, gender</mark>, there by <mark>filtering viewer's feeds</mark> by location. Click on the post markers in below map to view posts for your location or <mark><a href="#login">Login</a></mark> to post your ad.</small></em>
+</h2>
+<div class="row" ng-include="'/app/error/errorhandler.view.html'"></div>
+<div class="row text-center">
+	<hr class="soften small">
+</div>
+<div class="row">
+	<div class="col-sm-2 small" id="catdiv">
+		<div><strong>Category Filter <em><span ng-if="selectedcatid" role="button" ng-click="GetFeed(null,null)">(Clear)</span></em></strong></div>
+		<div ng-repeat="c in categories">
+			<div>
+				<span role="button" ng-click="HideOthers(c.parent.replace(' ',''))" data-toggle="collapse" data-target="#{{c.parent.replace(' ','')}}">
+					<span class="glyphicon glyphicon-triangle-right small" id="img{{c.parent.replace(' ','')}}"></span> {{c.parent}}
+				</span>
+			</div>
+			<div id="{{c.parent.replace(' ','')}}" imgid="#img{{c.parent.replace(' ','')}}" class="collapse">
+				<div ng-repeat="cc in c.child">&nbsp&nbsp
+					<span class="glyphicon glyphicon-minus small"></span>&nbsp
+					<span class="{{selectedcatid==cc.id?'selectedleaf':'leaf'}}" role="button" ng-click="GetFeed(cc.id, cc.code)" catid="{{cc.id}}">{{cc.code}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-10">
+		<div class="text-center"><em><strong><span ng-bind="locTitle"></span></strong></em></div>
+		<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+		<div id="mapDiv"></div>
+	</div>
+</div>
+<div class="row">
+	<hr class="soften small">
+</div>

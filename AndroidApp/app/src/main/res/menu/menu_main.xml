@@ -1,0 +1,55 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <!-- "favorite filter", should appear as action button if possible -->
+    <item
+        android:id="@+id/action_fav_filter"
+        android:icon="@drawable/ic_filter_list_black"
+        android:title="@string/action_set_fav_filter_on"
+        app:showAsAction="always"/>
+
+    <!-- "category filter", should appear as action button if possible -->
+    <item
+        android:id="@+id/action_cat_filter"
+        android:icon="@drawable/ic_filter_list_black"
+        android:title="@string/action_set_category_filter_on"
+        app:showAsAction="always"/>
+
+    <!-- Refresh Feeds, should always be in the overflow -->
+    <item android:id="@+id/action_refresh_feed"
+        android:icon="@drawable/ic_refresh_black"
+        android:title="@string/action_refresh_feeds"
+        app:showAsAction="always"/>
+
+    <!-- "Flag Posts", should appear as action button if possible -->
+    <item
+        android:id="@+id/action_flag_post"
+        android:icon="@drawable/ic_flag_black"
+        android:title="@string/action_flag_as_inappropriate"
+        app:showAsAction="always"/>
+
+    <!-- "Flag Posts", should appear as action button if possible -->
+    <item
+        android:id="@+id/action_fb_share_post"
+        android:icon="@drawable/ic_share_black"
+        android:title="@string/action_fb_share_post"
+        app:showAsAction="always"/>
+
+    <!-- "New Post", should always be in the overflow -->
+    <item android:id="@+id/action_new_post"
+        android:icon="@drawable/ic_add_black"
+        android:title="@string/action_new_post"
+        app:showAsAction="always"/>
+
+    <!-- Refresh Posts, should always be in the overflow -->
+    <item android:id="@+id/action_refresh_posts"
+        android:icon="@drawable/ic_refresh_black"
+        android:title="@string/action_refresh_posts"
+        app:showAsAction="always"/>
+
+    <!-- Refresh Feeds, should always be in the overflow -->
+    <item android:id="@+id/action_retry_login"
+        android:icon="@drawable/ic_refresh_black"
+        android:title="@string/action_retry_login"
+        app:showAsAction="always"/>
+</menu>

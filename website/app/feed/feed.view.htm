@@ -1,0 +1,57 @@
+<div class="row" ng-include="'/app/error/errorhandler.view.html'"></div>
+<div class="row text-center">
+	<h3>My Feeds</h3>
+	<span ng-bind="'Location : ' + address" class="small"></span>
+	<hr class="soften small">
+</div>
+<div class="row">
+	<div class="col-sm-2 small" id="catdiv">
+		<div><strong>Category Filter <em><span ng-if="selectedcatid" role="button" ng-click="LoadList(null,null)">(Clear)</span></em></strong></div>
+		<div ng-repeat="c in categories">
+			<div>
+				<span role="button" ng-click="HideOthers(c.parent.replace(' ',''))" data-toggle="collapse" data-target="#{{c.parent.replace(' ','')}}">
+					<span class="glyphicon glyphicon-triangle-right small" id="img{{c.parent.replace(' ','')}}"></span> {{c.parent}}
+				</span>
+			</div>
+			<div id="{{c.parent.replace(' ','')}}" imgid="#img{{c.parent.replace(' ','')}}" class="collapse">
+				<div ng-repeat="cc in c.child">&nbsp&nbsp
+					<span class="glyphicon glyphicon-minus small"></span>&nbsp
+					<span class="{{selectedcatid==cc.id?'selectedleaf':'leaf'}}" role="button" ng-click="LoadList(cc.id, cc.code)" catid="{{cc.id}}">{{cc.code}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-if="listPost.length>0" class="col-sm-10">
+		<div class="row small">
+			Toggle favorites filter : 
+			<span ng-click="toggleFavFilter()" role="button">
+				<span class="glyphicon glyphicon-filter"></span>
+				<strong><span class="strong"ng-bind=" (search.flag=='1'?'On':'Off')"> On</span></strong>
+			</span>
+		</div>
+		<br/>
+		<div class="row" ng-repeat="x in listPost | filter:search |orderBy:crtdOn:reverse">
+			<div class="col-sm-2">
+				<a href="" alt="{{(x.flag=='1')?'Remove as Favorite':'Add as Favorite'}}"
+				   title="{{(x.flag=='1')?'Remove as Favorite':'Add as Favorite'}}" class="small">
+					<span class="glyphicon {{(x.flag=='1')?'glyphicon-star':'glyphicon-star-empty'}}" ng-click="SetFeedFlag(x.Id, x.flag);"></span>
+				</a>
+				&nbsp
+				<a href="" alt="Dismiss Feed" title="Dismiss Feed" class="small">
+					<span class="glyphicon glyphicon-remove" ng-click="DismissPost(x.Id);"></span>
+				</a>
+				&nbsp
+				<span>{{x.crtdOn}}</span>
+			</div>
+			<div class="col-sm-10">
+				<a href="#feed/{{x.Id}}">{{x.hdr}}</a>
+			</div>
+		</div>
+	</div>
+	<div ng-if="listPost.length==0" class="col-sm-10 text-center">
+		<h3><em><small>This location does not have any post.</em></h3>
+	</div>
+</div>
+<div class="row">
+	<hr class="soften">
+</div>

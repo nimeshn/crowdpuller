@@ -1,0 +1,96 @@
+<div class="row" ng-include="'/app/error/errorhandler.view.html'"></div>
+<div class="row text-center">
+	<h3 itemprop="name" ng-bind="postData.hdr"></h3>
+	<hr class="soften small">
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="row">
+			<div class="col-sm-12 small">
+				<div class="pull-left">
+					<a ng-href="{{sharedView?'#home':'#feed'}}" alt="click to go back to feed list"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+				</div>
+				<div class="pull-right">
+					<a href="" ng-click="FlagPost();">Flag as Inappropriate</a>
+					&nbsp
+					<span role="button" class="glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#bannedModal"></span>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-sm-12">
+				<p itemprop="description" ng-bind="postData.msg" class="text-justify"></p>
+			</div>
+		</div>
+		<div class="row"/>
+		<div class="row" ng-if="(respData.length > 0)">
+			<div class="col-sm-12">
+				<strong class="small">You can select any options as your response:</strong><br />
+				<label class="radio-inline" ng-repeat="rsp in respData|orderBy:ord">
+					<input type="radio" name="rspOption" ng-model="$parent.postData.rspDtlId" value="{{rsp.id}}" ng-change="SaveResponse();" />{{rsp.val}} ({{rsp.rspCount}})
+				</label>
+			</div>
+		</div>
+		<br />
+		<div class="row">
+			<div class="col-sm-12 small">
+				<label class="control-label" for="postRegion"><strong>Posted Category: </strong></label>
+				<span id="postRegion" ng-bind="postData.catcode"></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 small">
+				<label class="control-label" for="postRegion"><strong>Posted locality: </strong></label>
+				<span id="postRegion" ng-bind="postData.addr"></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 small">
+				<label class="control-label" for="postedBy"><strong>Posted By: </strong></label>
+				<span id="postedBy" ng-bind="postData.postedBy"></span>
+				<label class="control-label" for="expryDt"><strong> on </strong></label>
+				<span id="expryDt" ng-bind="postData.crtdOn"></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<strong><small>Share this post through:</small></strong>
+				<br/>
+				<a id="fbFeedBtn" ng-click="shareOnFB();" class="btn btn-xs btn-social btn-facebook" style="vertical-align:baseline">
+					<span class="fa fa-facebook"></span>Share
+				</a>&nbsp&nbsp
+				<div id="gShare" data-action="share"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="bannedModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Inappropriate or Banned Content</h4>
+            </div>
+            <div class="modal-body small">
+                <p>All users must comply with all applicable laws, the <span ng-bind="appName"></span> terms of use, and all posted rules.</p>
+                <p>Here is a partial list of goods, services, and content prohibited on <span ng-bind="appName"></span>:</p>
+                <ul>
+                    <li ng-repeat="rsn in flagReasons|orderBy:Id">
+                        {{rsn.dscrpt}}
+                    </li>
+                </ul>
+                <p>Please don't use <span ng-bind="appName"></span> for these purposes, and flag anyone else you see doing so.</p>
+                <p>Thanks for helping keep <span ng-bind="appName"></span> safe and useful for everyone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+	<hr class="soften small">
+</div>

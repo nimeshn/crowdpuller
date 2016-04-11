@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_id": "crowdpuller-1143",
+    "project_number": "204285913760",
+    "name": "CrowdPuller"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204285913760:android:4abe741422aa5e30",
+        "client_id": "android:com.bitwinger.crowdpuller",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.bitwinger.crowdpuller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204285913760-2mmoc3g5urf21ogmjlgmoh3a51lspabg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bitwinger.crowdpuller",
+            "certificate_hash": "0442454BBCBAC8405C0B77E8FAFB5526D9A843DC"
+          }
+        },
+        {
+          "client_id": "204285913760-l1ffdja39fq76g8srsqueqimlhldtss0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

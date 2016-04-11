@@ -1,0 +1,36 @@
+<div class="row" ng-include="'/app/error/errorhandler.view.html'"></div>
+<div class="row text-center">
+	<h3>My Posts</h3>
+	<hr class="soften">
+</div>
+<div class="row text-center">
+	<a href="" ng-click="LoadList()">
+		<span class="glyphicon glyphicon-refresh" /> Refresh
+	</a>
+	<a href="#post/" class="col-sm-offset-1">
+		<span class="glyphicon glyphicon-plus" /> New Post
+	</a>	
+</div>
+<br/>
+<div ng-if="listPost.length>0" class="row" ng-repeat="x in listPost | orderBy:crtdOn:reverse">
+	<div class="col-sm-offset-1 col-sm-2">
+		<a href="#post/{{x.Id}}" alt="Edit" title="Edit" class="small">
+			<span class="glyphicon glyphicon-edit"></span>
+		</a>
+		&nbsp
+		<a href="" alt="Delete" title="Delete" class="small">
+			<span class="glyphicon glyphicon-trash" ng-click="delete(x.Id);"></span>
+		</a>
+		&nbsp
+		<span>{{x.crtdOn}}</span>
+	</div>
+	<div class="col-sm-9">
+		<a href="#post/{{x.Id}}">{{x.hdr}}</a>
+	</div>
+</div>
+<div ng-if="listPost.length==0" class="row text-center">
+	<h3><em><small>You have not posted anything so far. Click on <mark>New Post</mark> to start posting in your neighbourhood.</small></em></h3>
+</div>
+<div class="row text-center">
+	<hr class="soften">
+</div>
